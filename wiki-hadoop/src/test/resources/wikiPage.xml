@@ -1,0 +1,100 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="en">
+  <siteinfo>
+    <sitename>Wikipedia</sitename>
+    <base>http://en.wikipedia.org/wiki/Main_Page</base>
+    <generator>MediaWiki 1.24wmf4</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wikipedia</namespace>
+      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal talk</namespace>
+      <namespace key="108" case="first-letter">Book</namespace>
+      <namespace key="109" case="first-letter">Book talk</namespace>
+      <namespace key="118" case="first-letter">Draft</namespace>
+      <namespace key="119" case="first-letter">Draft talk</namespace>
+      <namespace key="446" case="first-letter">Education Program</namespace>
+      <namespace key="447" case="first-letter">Education Program talk</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Moxazocine</title>
+    <ns>0</ns>
+    <id>35584510</id>
+    <revision>
+      <id>607655096</id>
+      <parentid>592593350</parentid>
+      <timestamp>2014-05-08T17:10:33Z</timestamp>
+      <contributor>
+        <username>Rjwilmsi</username>
+        <id>203434</id>
+      </contributor>
+      <minor/>
+      <comment>Added 1 doi to a journal cite using [[Project:AWB|AWB]] (10104)</comment>
+      <text xml:space="preserve" bytes="2980">{{Drugbox
+| IUPAC_name               = (1''S'',9''R'',13''S'')-10-(cyclopropylmethyl)-13-methoxy-1-methyl-10-azatricyclo[7.3.1.0&lt;sup&gt;2,7&lt;/sup&gt;]trideca-2,4,6-trien-4-ol
+| image                    = moxazocine structure.svg
+| CAS_number               = 58239-89-7
+| ATC_prefix               = 
+| ATC_suffix               = 
+| PubChem                  = 
+| ChemSpiderID             = 16737008
+| C = 18 | H = 25 | N = 1 | O = 2
+| molecular_weight         = 287.397 g/mol
+| smiles                   = Oc1ccc2C[C@H]3N(CC[C@@](C)(c2c1)[C@@H]3OC)CC4CC4
+| InChI                    = 1/C18H25NO2/c1-18-7-8-19(11-12-3-4-12)16(17(18)21-2)9-13-5-6-14(20)10-15(13)18/h5-6,10,12,16-17,20H,3-4,7-9,11H2,1-2H3/t16-,17-,18+/m1/s1
+| InChIKey                 = IOZWXJXXVLARQC-KURKYZTEBH
+| StdInChI                 = 1S/C18H25NO2/c1-18-7-8-19(11-12-3-4-12)16(17(18)21-2)9-13-5-6-14(20)10-15(13)18/h5-6,10,12,16-17,20H,3-4,7-9,11H2,1-2H3/t16-,17-,18+/m1/s1
+| StdInChIKey              = IOZWXJXXVLARQC-KURKYZTESA-N
+| bioavailability          = 
+| protein_bound            = 
+| metabolism               = 
+| elimination_half-life    = 
+| excretion                = 
+| pregnancy_category       = 
+| legal_status             = 
+| routes_of_administration = 
+}}
+
+'''Moxazocine''' ('''BL-4566''') is an [[opioid]] [[analgesic]] of the [[benzomorphan]] family which was never marketed.&lt;ref name=&quot;Triggle1997&quot;&gt;{{cite book | title = Dictionary of Pharmacological Agents Volume 2 | url = http://books.google.com/books?id=A0THacd46ZsC&amp;pg=PA1382 | accessdate = 22 April 2012 | publisher = CRC Press | isbn = 978-0-412-46630-4 | page = 1382}}&lt;/ref&gt; It acts as a [[partial agonist]] or mixed [[agonist]]/[[receptor antagonist|antagonist]] of the [[opioid receptor]]s and binds preferentially to the [[κ-opioid receptor]].&lt;ref name=&quot;pmid2822190&quot;&gt;{{cite journal | author = Hayes AG, Sheehan MJ, Tyers MB | title = Differential sensitivity of models of antinociception in the rat, mouse and guinea-pig to mu- and kappa-opioid receptor agonists | journal = [[British Journal of Pharmacology]] | volume = 91 | issue = 4 | pages = 823–32 |date=August 1987 | pmid = 2822190 | pmc = 1853585 | doi = 10.1111/j.1476-5381.1987.tb11281.x| url = }}&lt;/ref&gt; Despite its failure to reach the market, [[clinical trial|clinical studies]] demonstrated moxazocine to be approximately 10x as [[potency (pharmacology)|potent]] by weight as [[morphine]] as an analgesic.&lt;ref name=&quot;Dobkin1977&quot;&gt;{{cite journal | title = Moxazocine and morphine in patients with severe postoperative pain | authors = Dobkin, Allen B; Esposito, Barbara F; Noveck, Robert J; Caruso, Frank S | journal = Current Therapeutic Research | volume = 22(4) |date=October 1977 | pages = 469–478 | url = http://psycnet.apa.org/psycinfo/1978-23576-001}}&lt;/ref&gt;
+
+== See also ==
+* [[Benzomorphan]]
+
+== References ==
+{{Reflist}}
+
+{{Analgesics}}
+{{Antitussives}}
+{{Opioids}}
+
+[[Category:Analgesics]]
+[[Category:Antitussives]]
+[[Category:Benzomorphans]]
+[[Category:Opioids]]</text>
+      <sha1>7sggfz40r0wm6t3vuxe714jxw1s5uvx</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
