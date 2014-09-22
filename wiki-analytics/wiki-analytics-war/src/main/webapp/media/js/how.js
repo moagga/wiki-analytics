@@ -1,4 +1,4 @@
-var paper = new Raphael($('#how').get(), 1200, 400);
+var paper = new Raphael($('#how').get(), 1200, 550);
 var p = paper.paper;
 //var circle = p.circle(100, 100, 80);
 /*
@@ -13,13 +13,14 @@ console.log(cu);
 var nP = p.path(p3);
 //var nP = p.path(cu.join(' '));
 */
-var link = function(x, y){
+var link = function(x, y, t){
 	
 	this.x = x;
 	this.y = y;
-	
+	this.t = t || 'Link';
 	this.instance = p.circle(this.x, this.y, 10);
 	this.instance.glow();
+	this.text = p.text(this.x, this.y + 20, this.t);
 	
 	return {
 		x : x,
@@ -28,9 +29,19 @@ var link = function(x, y){
 };
 
 var g = {
-	
-	center: function(c){
-		this.c = c;
+
+	var paper = new Raphael($('#how').get(), 1200, 550);
+	var p = paper.paper;
+	var orX = 600, orY = 275;
+
+	center: function(link){
+		p.circle(orX, orY, 10).glow().attr({'stroke': 'red'}).animate();
+/*		
+		var ci = paper.circle(320, 240, 60).glow();
+function repeat(){
+ci.attr({'transform': 's1'}).animate({'transform': 's1.1'}, 1000, repeat)};
+repeat();
+*/
 	},
 	
 	clear: function(){
@@ -41,27 +52,36 @@ var g = {
 		var len = links.length;
 		var hyp = 300;
 		var angle = 0;
+		var odd = true;
 		for(var i=0; i < len; i++){
 			var sin = Math.sin(angle);
 			var cos = Math.cos(angle);
+			var x = hyp*cos + c.x;
 			var lnk = new link(hyp*cos + c.x, hyp*sin + c.y);
 			this.connect(this.c, lnk);
 			switch(i%5){
 				case 0:
-					angle = Math.PI/6;
+					angle = odd ? (Math.PI/6) : (Math.PI/12);
+					break;
 				case 1:
-					angle = -(Math.PI/6); 
+					angle = odd ? -(Math.PI/6) : -(Math.PI/12);
+					break;
 				case 2:
-					angle = Math.PI/3;
+					angle = odd ? (Math.PI/3) : (Math.PI/4);
+					break;
 				case 3:
-					angle = -(Math.PI/3);
-			}	
-			if (i%5 == 0){
+					angle = odd ? -(Math.PI/3) : -(Math.PI/4);
+					break;
+			}
+			if (i%5 == 4){
+				odd = !odd;
 				hyp += 100;
 				angle = 0;
 			}
 		}
 	},
+	
+	
 	
 	connect: function(from, to){
 		var ps = 'M ' + from.x + ' ' + from.y;
@@ -78,7 +98,6 @@ var g = {
 		
 		ps += ' S ' + mx + ' ' + my + ' ';
 		ps += to.x + ' ' + to.y;
-		console.log(ps);
 		var path = p.path(ps);
 		path.attr({stroke: 'white'});
 		path.animate({stroke: 'blue'}, 3000);
@@ -87,7 +106,7 @@ var g = {
 
 var c = new link(600, 275);
 g.center(c);
-g.outs([1,2,3]);
+g.outs([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
 
 /*
 var o1 = new link(900, 75);
