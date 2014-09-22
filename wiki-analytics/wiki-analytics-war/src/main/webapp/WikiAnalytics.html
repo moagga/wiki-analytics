@@ -8,6 +8,7 @@
 	<!-- Bootstrap core CSS -->
 	<link href="media/css/bootstrap.css" rel="stylesheet">
 	<link href="media/css/wiki.css" rel="stylesheet">
+	
 </head>
 <body>
 	<div class="navbar navbar-default navbar-fixed-top">
@@ -17,7 +18,7 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav" id="tabGroup">
-					<li class="active"><a href="#home">Home</a></li>
+					<li class="active"><a href="#how">Home</a></li>
 					<li><a href="#how">How</a></li>
 					<li><a href="#about">About</a></li>
 				</ul>
@@ -25,26 +26,28 @@
       </div>
 	</div>
 
+	<div class="tab-pane" id="how"></div>
 
+	<!--
 	<div class="tab-content">
 		<div class="tab-pane active" id="home">
 			<div class="container search">
 				<p class="text-muted desc extended">This application demonstrate the use of Hadoop to establish the link graph of Wikipedia articles.</p>
 				<div class="center-block">
-					<input class="form-control input-lg" type="text" placeholder="Enter Wikipedia article name">
+					<input name="q" class="form-control input-lg" type="text" placeholder="Enter Wikipedia article name">
 				</div>
 			</div>
 
 			<div class="container results hidden">
 				<h3>{Article Name}</h3>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="inwards col-md-6">
 						<h4>Pages leading to {article}</h4>
 						<ul class="list-inline">
 							<li><a class="btn-lg" href="#" >Cras justo odio</a></li>
 						</ul>
 					</div>
-					<div class="col-md-6">
+					<div class="outwards col-md-6">
 						<h4>Pages leading from {article}</h4>
 						<ul class="list-inline">
 							<li><a class="btn-lg" href="#" >Cras justo odio</a></li>
@@ -53,9 +56,10 @@
 				</div>		
 			</div>
 		</div>
-		<div class="tab-pane" id="how">How</div>
+		<div class="tab-pane" id="how"></div>
 		<div class="tab-pane" id="about">About</div>
 	</div>
+		-->
 	
 	<div class="footer">
       <div class="container text-muted">
@@ -70,7 +74,21 @@
     </div>
 	
 	<script  type="text/template" id="linkTemplate">
-					<li><a class="" href="#" >Cras justo odio</a></li>
+		<h3>{article}</h3>
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Pages leading to {article}</h4>
+				<ul class="list-inline">
+					<li><a class="btn-lg" href="#" >Cras justo odio</a></li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<h4>Pages leading from {article}</h4>
+				<ul class="list-inline">
+					<li><a class="btn-lg" href="#" >Cras justo odio</a></li>
+				</ul>
+			</div>
+		</div>
 	</script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -79,13 +97,15 @@
     <script src="media/js/lib/underscore.js"></script>
     <script src="media/js/lib/backbone.js"></script>
     <script src="media/js/lib/bootstrap.js"></script>
+    <script src="media/js/lib/r.js"></script>
+    <script src="media/js/how.js"></script>
 	
 	<script>
-$('#tabGroup a').click(function (e) {
-	e.preventDefault();
-	$(this).tab('show');
-});
-$('#tabGroup a:first').tab('show');
+//$('#tabGroup a').click(function (e) {
+//	e.preventDefault();
+//	$(this).tab('show');
+//});
+//$('#tabGroup a:first').tab('show');
 </script>
 </body>
 </html>
