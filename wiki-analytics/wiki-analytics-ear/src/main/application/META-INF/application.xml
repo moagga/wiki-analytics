@@ -4,7 +4,7 @@
   <module>
     <web>
       <web-uri>wiki-analytics-war-1.0-SNAPSHOT.war</web-uri>
-      <context-root>/wiki-analytics</context-root>
+      <context-root>/wiki-analytics-war</context-root>
     </web>
   </module>
   <library-directory>lib</library-directory>
