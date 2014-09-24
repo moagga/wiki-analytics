@@ -1,23 +1,31 @@
-var result, aCount = 1;
-function getRandomInt() {
-	var min = 4, max = 20;
+var result = {}, aCount = 1;
+function getRandomInt(min, max) {
+	var min = min || 4, max = max || 20;
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 function getRandomResults(){
 	var count = getRandomInt();
-	result = [];
+	var out = [];
 	for(var i = 0; i < count; i++){
-		result[i] = 'Article ' + aCount;
+		out[i] = 'Article ' + aCount;
 	}
-	G.paintOut(result);
+	result.out = out;
+	
+	count = getRandomInt();
+	var ins = [];
+	for(var i = 0; i < count; i++){
+		ins[i] = 'Article ' + aCount;
+	}
+	result.ins = ins;
+	G.paint(result);
 }
 
 (function(){
 
-	var paper = new Raphael($('#how').get(), 1200, 550).paper,
+	var paper = new Raphael($('#how').get(), 1200, 480).paper,
 	origin = {
 		x : 600,
-		y : 275
+		y : 240
 	};
 
 	var center = function(link, animate){
@@ -58,43 +66,44 @@ function getRandomResults(){
 		paper.clear();
 	};
 	
+	var paint = function(data){
+		outs(data.out);
+		ins(data.ins);
+	};
+	
 	var outs = function(links){
 		var len = links.length;
 		var hyp = 300;
 		var angle = 0;
 		var odd = true;
 		for(var i=0; i < len; i++){
-			var sin = Math.sin(angle);
-			var cos = Math.cos(angle);
-			var lnk = new link(hyp*cos + origin.x, hyp*sin + origin.y);
-			connect(origin, lnk);
-			switch(i%5){
-				case 0:
-					angle = odd ? (Math.PI/6) : (Math.PI/12);
-					break;
-				case 1:
-					angle = odd ? -(Math.PI/6) : -(Math.PI/12);
-					break;
-				case 2:
-					angle = odd ? (Math.PI/3) : (Math.PI/4);
-					break;
-				case 3:
-					angle = odd ? -(Math.PI/3) : -(Math.PI/4);
-					break;
-			}
-			if (i%5 == 4){
-				odd = !odd;
-				hyp += 100;
-				angle = 0;
-			}
+			var x = getRandomInt(600, 1200);
+			var y = getRandomInt(0, 480);
+			var lnk = new link(x, y);
+			connect(origin, lnk, false);
 		}
 	};
 	
+	var ins = function(links){
+		var len = links.length;
+		var hyp = 300;
+		var angle = 0;
+		var odd = true;
+		for(var i=0; i < len; i++){
+			var x = getRandomInt(0, 600);
+			var y = getRandomInt(0, 480);
+			var lnk = new link(x, y);
+			connect(lnk, origin, true);
+		}
+	};
 	
-	var connect = function(from, to){
+	var connect = function(from, to, inward){
 		var ps = 'M ' + from.x + ' ' + from.y;
 		var mx = (from.x + to.x)/2, my;
 		var up = to.y - from.y;
+		if (inward){
+			up = -1 * up;
+		}
 		
 		if (up < 0){
 			my = to.y - 50;
@@ -108,16 +117,20 @@ function getRandomResults(){
 		ps += to.x + ' ' + to.y;
 		var path = paper.path(ps);
 		path.attr({stroke: 'white'});
-		path.animate({stroke: 'blue'}, 3000);
+		if (inward){
+			path.animate({stroke: 'green'}, 3000);
+		} else {
+			path.animate({stroke: 'blue'}, 3000);
+		}
 	};
 	
 	window.G = {
 		clear: clear,
-		paintOut: outs,
+		paint: paint,
 		start: start
 	}
 })();
 
 G.start('Article 1');
-G.paintOut([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+//G.paint([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
 
