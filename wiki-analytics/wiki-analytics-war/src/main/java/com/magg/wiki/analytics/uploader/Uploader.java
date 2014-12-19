@@ -7,6 +7,8 @@ import java.util.Properties;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.tools.remoteapi.RemoteApiInstaller;
 import com.google.appengine.tools.remoteapi.RemoteApiOptions;
 
@@ -25,13 +27,13 @@ public class Uploader {
             Properties props = new Properties();
             props.load(in);
             for (Object key : props.keySet()) {
+                String link = (String) key;
                 Object value = props.get(key);
-                Entity entity = new Entity("Link");
-                entity.setProperty("name", key);
+                Key k = KeyFactory.createKey("Link", link);
+                Entity entity = new Entity(k);
                 entity.setProperty("links", value);
                 ds.put(entity);
             }
-            
         } finally {
             installer.uninstall();
         }
