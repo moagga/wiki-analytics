@@ -1,32 +1,20 @@
-var result = {}, aCount = 1;
-function getRandomInt(min, max) {
-	var min = min || 4, max = max || 20;
-	return Math.floor(Math.random() * (max - min)) + min;
-}
-function getRandomResults(){
-	var count = getRandomInt();
-	var out = [];
-	for(var i = 0; i < count; i++){
-		out[i] = 'Article ' + aCount;
-	}
-	result.out = out;
-	
-	count = getRandomInt();
-	var ins = [];
-	for(var i = 0; i < count; i++){
-		ins[i] = 'Article ' + aCount;
-	}
-	result.ins = ins;
-	G.paint(result);
-}
-
 (function(){
 
-	var paper = new Raphael($('#how').get(), 1200, 480).paper,
-	origin = {
-		x : 600,
-		y : 240
+	var w = 1100, h = 480, paper, started = false;
+	var origin = {
+		x : w/2,
+		y : h/2
 	};
+	
+	var init = function(){
+		if (started){
+			return;
+		}
+		$('#board').css({width: w, height: h});
+		paper = new Raphael($('#board').get(), w, h).paper;
+		started = true;
+	};
+	
 
 	var center = function(link, animate){
 		var ci = paper.circle(origin.x, origin.y, 10).glow();
@@ -56,10 +44,43 @@ function getRandomResults(){
 		}
 	};		
 	
+	var getRandomInt = function(min, max) {
+		var min = min || 4, max = max || 20;
+		return Math.floor(Math.random() * (max - min)) + min;
+	};
+	
+	var fetchFromServer = function(text){
+		$.ajax({
+			url: '/search?q=' + text;
+			success: function(data){
+				G.paint(data);
+			};
+		});
+/*		
+		var result = {}, aCount = 1;
+		var count = getRandomInt();
+		var out = [];
+		for(var i = 0; i < count; i++){
+			out[i] = 'Article ' + aCount;
+		}
+		result.out = out;
+	
+		count = getRandomInt();
+		var ins = [];
+		for(var i = 0; i < count; i++){
+			ins[i] = 'Article ' + aCount;
+		}
+		result.ins = ins;
+		G.paint(result);
+*/		
+	};
+
+	
 	var start = function(text){
+		init();
 		clear();
 		center(text, true);
-		getRandomResults();
+		fetchFromServer(text);
 	}
 	
 	var clear = function(){
@@ -77,8 +98,8 @@ function getRandomResults(){
 		var angle = 0;
 		var odd = true;
 		for(var i=0; i < len; i++){
-			var x = getRandomInt(600, 1200);
-			var y = getRandomInt(0, 480);
+			var x = getRandomInt(w/2 + 100, w);
+			var y = getRandomInt(0, h);
 			var lnk = new link(x, y);
 			connect(origin, lnk, false);
 		}
@@ -90,8 +111,8 @@ function getRandomResults(){
 		var angle = 0;
 		var odd = true;
 		for(var i=0; i < len; i++){
-			var x = getRandomInt(0, 600);
-			var y = getRandomInt(0, 480);
+			var x = getRandomInt(0, w/2 - 100);
+			var y = getRandomInt(0, h);
 			var lnk = new link(x, y);
 			connect(lnk, origin, true);
 		}
@@ -124,13 +145,15 @@ function getRandomResults(){
 		}
 	};
 	
+	$('input[name=q]').on('change', function(){
+		var v = $(this).val();
+		G.start(v);
+	});
+	
 	window.G = {
 		clear: clear,
 		paint: paint,
 		start: start
 	}
+	
 })();
-
-G.start('Article 1');
-//G.paint([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
-
