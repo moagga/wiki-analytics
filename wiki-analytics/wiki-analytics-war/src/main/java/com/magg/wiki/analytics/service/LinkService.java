@@ -39,7 +39,7 @@ public class LinkService {
             String[] parts = t.getValue().split(",");
             for (String part : parts) {
                 if (part.endsWith("^")){
-                    part = part.replaceAll("^", "");
+                    part = part.replaceAll("\\^", "");
                     out.add(part);
                 } else {
                     ins.add(part);

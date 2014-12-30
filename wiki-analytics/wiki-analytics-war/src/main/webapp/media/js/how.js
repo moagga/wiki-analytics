@@ -51,28 +51,11 @@
 	
 	var fetchFromServer = function(text){
 		$.ajax({
-			url: '/search?q=' + text;
+			url: 'query?q=' + text,
 			success: function(data){
 				G.paint(data);
-			};
+			}
 		});
-/*		
-		var result = {}, aCount = 1;
-		var count = getRandomInt();
-		var out = [];
-		for(var i = 0; i < count; i++){
-			out[i] = 'Article ' + aCount;
-		}
-		result.out = out;
-	
-		count = getRandomInt();
-		var ins = [];
-		for(var i = 0; i < count; i++){
-			ins[i] = 'Article ' + aCount;
-		}
-		result.ins = ins;
-		G.paint(result);
-*/		
 	};
 
 	
@@ -89,7 +72,7 @@
 	
 	var paint = function(data){
 		outs(data.out);
-		ins(data.ins);
+		ins(data.in);
 	};
 	
 	var outs = function(links){
@@ -100,7 +83,7 @@
 		for(var i=0; i < len; i++){
 			var x = getRandomInt(w/2 + 100, w);
 			var y = getRandomInt(0, h);
-			var lnk = new link(x, y);
+			var lnk = new link(x, y, links[i]);
 			connect(origin, lnk, false);
 		}
 	};
@@ -113,7 +96,7 @@
 		for(var i=0; i < len; i++){
 			var x = getRandomInt(0, w/2 - 100);
 			var y = getRandomInt(0, h);
-			var lnk = new link(x, y);
+			var lnk = new link(x, y, links[i]);
 			connect(lnk, origin, true);
 		}
 	};

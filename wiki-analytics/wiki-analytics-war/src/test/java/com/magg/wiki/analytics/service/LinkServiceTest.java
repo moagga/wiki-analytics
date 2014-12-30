@@ -33,11 +33,11 @@ public class LinkServiceTest {
         DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
         
         e1 = new Entity(KeyFactory.createKey("Link", "A"));
-        e1.setProperty("links", new Text("[B]^,[C]"));
+        e1.setProperty("links", new Text("B^,C"));
         ds.put(e1);
 
         e2 = new Entity(KeyFactory.createKey("Link", "B"));
-        e2.setProperty("links", new Text("[C]^,[A]"));
+        e2.setProperty("links", new Text("C^,A"));
         ds.put(e2);
         
         service = new LinkService();
