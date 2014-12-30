@@ -1,30 +1,51 @@
 package com.magg.wiki.analytics.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.Filter;
-import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Text;
 
 
 public class LinkService {
 
-    public Map<String, String> fetch(String linkName){
+    public Map<String, List<String>> fetch(String linkName){
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        Filter eq = new Query.FilterPredicate("name", FilterOperator.EQUAL, linkName);
-        Query query = new Query("Link").setFilter(eq);
+        Key k = KeyFactory.createKey("Link", linkName);
+        Query query = new Query(k);
         PreparedQuery pq = datastore.prepare(query);
         
-        Map<String, String> results = new HashMap<String, String>();
+        List<String> ins = new ArrayList<String>();
+        List<String> out = new ArrayList<String>();
+        Map<String, List<String>> results = new HashMap<String, List<String>>();
+        results.put("in", ins);
+        results.put("out", out);
+        
+        Entity e = null;
         for (Entity result : pq.asIterable()) {
-            String name = (String) result.getProperty("name");
-            String links = (String) result.getProperty("links");
-            results.put(name, links);
+            e = result;
+            break;
+        }
+        if (e != null){
+            Text t = (Text) e.getProperty("links");
+            String[] parts = t.getValue().split(",");
+            for (String part : parts) {
+                if (part.endsWith("^")){
+                    part = part.replaceAll("^", "");
+                    out.add(part);
+                } else {
+                    ins.add(part);
+                }
+                
+            }
         }
         return results;
     }

@@ -9,6 +9,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Text;
 import com.google.appengine.tools.remoteapi.RemoteApiInstaller;
 import com.google.appengine.tools.remoteapi.RemoteApiOptions;
 
@@ -23,16 +24,21 @@ public class Uploader {
         installer.install(options);
         try {
             DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("sample.properties");
+            InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("inout.properties");
             Properties props = new Properties();
             props.load(in);
             for (Object key : props.keySet()) {
                 String link = (String) key;
-                Object value = props.get(key);
-                Key k = KeyFactory.createKey("Link", link);
-                Entity entity = new Entity(k);
-                entity.setProperty("links", value);
-                ds.put(entity);
+                try {
+                    Object value = props.get(key);
+                    Key k = KeyFactory.createKey("Link", link);
+                    Entity entity = new Entity(k);
+                    Text t = new Text(value.toString());
+                    entity.setProperty("links", t);
+                    ds.put(entity);
+                } catch (Exception e) {
+                    System.out.println("Exception occured while inserting link:" + link);
+                }
             }
         } finally {
             installer.uninstall();

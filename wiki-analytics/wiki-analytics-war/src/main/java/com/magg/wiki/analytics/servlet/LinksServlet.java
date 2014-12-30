@@ -1,6 +1,7 @@
 package com.magg.wiki.analytics.servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -26,8 +27,7 @@ public class LinksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         String linkName = req.getParameter("q");
-        Map<String, String> results = service.fetch(linkName);
-
+        Map<String, List<String>> results = service.fetch(linkName);
         response.setContentType("application/json");
 
         Gson g = new Gson();
