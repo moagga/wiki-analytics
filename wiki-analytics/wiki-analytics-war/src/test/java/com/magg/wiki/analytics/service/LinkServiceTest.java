@@ -32,11 +32,11 @@ public class LinkServiceTest {
         helper.setUp();
         DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
         
-        e1 = new Entity(KeyFactory.createKey("Link", "A"));
+        e1 = new Entity(KeyFactory.createKey("Link", "a"));
         e1.setProperty("links", new Text("B^,C"));
         ds.put(e1);
 
-        e2 = new Entity(KeyFactory.createKey("Link", "B"));
+        e2 = new Entity(KeyFactory.createKey("Link", "b"));
         e2.setProperty("links", new Text("C^,A"));
         ds.put(e2);
         

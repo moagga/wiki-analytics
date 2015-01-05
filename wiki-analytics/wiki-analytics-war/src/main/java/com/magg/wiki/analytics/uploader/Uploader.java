@@ -31,6 +31,7 @@ public class Uploader {
                 String link = (String) key;
                 try {
                     Object value = props.get(key);
+                    link = link.toLowerCase().replaceAll("_", " ");
                     Key k = KeyFactory.createKey("Link", link);
                     Entity entity = new Entity(k);
                     Text t = new Text(value.toString());

@@ -19,7 +19,7 @@ public class LinkService {
 
     public Map<String, List<String>> fetch(String linkName){
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        Key k = KeyFactory.createKey("Link", linkName);
+        Key k = KeyFactory.createKey("Link", linkName.toLowerCase());
         Query query = new Query(k);
         PreparedQuery pq = datastore.prepare(query);
         

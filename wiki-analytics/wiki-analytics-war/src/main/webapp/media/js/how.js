@@ -29,6 +29,7 @@
 	
 	var link = function(x, y, t){
 		t = t || 'Link';
+		t = t.replace('_', ' ');
 		var art = paper.circle(x, y, 10);
 		art.glow();
 		art.click(function(){
