@@ -8,7 +8,7 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <appengine.target.version>1.9.7</appengine.target.version>
+    <appengine.target.version>1.9.17</appengine.target.version>
   </properties>
 
   <build>
@@ -37,5 +37,6 @@
   <modules>
     <module>wiki-analytics-war</module>
     <module>wiki-analytics-ear</module>
+    <module>wiki-uploader</module>
   </modules>
 </project>
